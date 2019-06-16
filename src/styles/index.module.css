@@ -1,0 +1,83 @@
+.item1,
+.item2,
+.item3 {
+  position: absolute;
+  transition: transform 0.5s ease-in-out;
+}
+.item1 {
+  width: 50%;
+  left: 0;
+  background: grey;
+  height: 100%;
+}
+.item3 {
+  width: 50%;
+  right: 0;
+  background: lightgreen;
+  height: 100%;
+}
+.item2 {
+  z-index: 0;
+  background: lightblue;
+  height: 100%;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.05);
+  transition-delay: 100ms;
+}
+.scale {
+  transform: translate(-50%, -50%) scale(1);
+  transition-delay: 0;
+}
+.scale ~ .item1 {
+  transform: translate(-100%, 0);
+}
+.scale ~ .item3 {
+  transform: translate(100%, 0);
+}
+
+.item1 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.item3 {
+  display: flex;
+  align-items: center;
+  font-size: 3.2rem;
+  padding: 1rem;
+}
+
+.item3 > * {
+  width: 40%;
+}
+
+button {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+header > ul {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: space-evenly;
+  height: 20%;
+}
+
+header > ul > li:hover {
+  color: #ca2017;
+  cursor: pointer;
+}
+
+header > ul > li::before {
+  content: "/";
+}
+
+.scale ~ button {
+  display: none;
+}
