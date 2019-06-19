@@ -60,24 +60,6 @@ button {
   left: 50%;
   transform: translateX(-50%);
 }
-
-header > ul {
-  display: flex;
-  list-style: none;
-  width: 100%;
-  justify-content: space-evenly;
-  height: 20%;
-}
-
-header > ul > li:hover {
-  color: #ca2017;
-  cursor: pointer;
-}
-
-header > ul > li::before {
-  content: "/";
-}
-
 .scale ~ button {
   display: none;
 }

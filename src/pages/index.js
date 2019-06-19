@@ -1,34 +1,29 @@
 import React from "react"
+import Header from "../components/header"
 import "../styles/index.css"
 import indexstyles from "../styles/index.module.css"
 
 export default () => {
-  const buttonRef = React.useRef(0)
+  const [isOpen, setOpen] = React.useState(false)
+
+  React.useEffect(() => {
+    if (localStorage.hasOwnProperty("isOpen")) {
+      setTimeout(() => setOpen(localStorage.getItem("isOpen")), 500)
+    } else {
+      localStorage.setItem("isOpen", isOpen)
+    }
+    return () => void localStorage.setItem("isOpen", isOpen)
+  }, [])
 
   const open = () => {
-    buttonRef.current.classList.toggle(indexstyles.scale)
+    setOpen(true)
     localStorage.setItem("isOpen", true)
   }
+
   return (
     <section>
-      <div ref={buttonRef} className={indexstyles.item2}>
-        <header>
-          <ul>
-            <li>Home</li>
-            <li>Blog</li>
-            <li></li>
-            <li></li>
-            <li>
-              Categories
-              <ul>
-                <li>Posts</li>
-                <li>Poems</li>
-                <li>Thoughts</li>
-              </ul>
-            </li>
-            <li>About</li>
-          </ul>
-        </header>
+      <div className={`${indexstyles.item2} ${isOpen && indexstyles.scale}`}>
+        <Header></Header>
       </div>
       <div className={indexstyles.item1}>
         <img src="https://unsplash.it/200" alt="" />
