@@ -1,67 +1,122 @@
-.menu {
-  height: 60px;
-  list-style: none;
+.header {
+  width: 25vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: black;
+  color: white;
+}
+
+.icon {
+  height: 30vh;
+  background: url(https://unsplash.it/360) no-repeat;
+}
+
+.subtitle {
+  padding: 0.4em;
+  text-align: center;
+}
+
+.social {
   display: flex;
   justify-content: space-evenly;
+  height: 60px;
+  align-items: center;
+}
+
+.social a {
+  color: whitesmoke;
+  font-weight: 900;
+  text-decoration: none;
+  border-radius: 50%;
+  text-align: center;
+  border: 0.1em solid whitesmoke;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-45deg);
+  transition: transform 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    border-radius 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.social a:hover {
+  color: black;
+  background: whitesmoke;
+  border-radius: 8px;
+  transform: rotate(0deg);
+}
+
+.nav {
+  flex: 1;
+}
+
+.menu {
+  list-style: none;
   cursor: pointer;
-  box-shadow: 0 8px 8px -5px rgba(0, 0, 0, 0.2);
   background: black;
   color: whitesmoke;
 }
 
 .menu-item {
+  margin-top: 1em;
+  padding: 0.4em;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex: 1;
   position: relative;
 }
 
-.menu-item::after {
-  content: ' / ';
+.menu-item::before,
+.sub-menu li::before,
+.active::before {
   position: absolute;
-  right: 100%;
-  text-align: center;
+  left: 0;
+  transform-origin: 0;
+  transition: transform 0.3s linear;
+  content: '';
+  width: 0.4em;
+  height: 100%;
+  background: #ca2017;
+  transform: scaleX(0);
 }
 
-.menu li:hover {
-  color: tomato;
-}
-.menu li:hover::after {
-  color: white;
+.active::before {
+  transform: scaleX(0.8);
 }
 
-.menu-item:nth-of-type(1)::after {
-  content: none;
+.menu-item:hover::before,
+.sub-menu li:hover::before {
+  transform: scaleX(0.8);
 }
 
+.sub-menu-wrapper {
+  transform-origin: 50% 0%;
+  height: 0;
+  transition: height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.menu-item:nth-of-type(3):hover ~ .sub-menu-wrapper,
+.menu-item:nth-of-type(3).active ~ .sub-menu-wrapper,
+.sub-menu-wrapper:hover {
+  height: 4.8em;
+}
+
+.menu-item:nth-of-type(3):hover + .menu-item:nth-of-type(5) {
+  margin-top: 0;
+}
 .sub-menu {
   background: black;
   color: white;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  position: absolute;
   padding: 0.4em;
-  text-align: center;
   list-style: none;
   width: 100%;
-  opacity: 0;
-  top: 100%;
-  transform: translateY(-40%);
-  transition: transform 0.3s ease-in, opacity 0.2s linear;
-  box-shadow: 0 8px 8px -5px rgba(0, 0, 0, 0.2);
+  height: 98px;
 }
 
 .sub-menu li {
-  padding: 5px 10px;
-}
-
-.menu-item:nth-of-type(3):hover .sub-menu {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.sub-menu.open {
-  opacity: 1;
-  transform: translateY(0);
+  padding: 0.2em;
+  position: relative;
 }

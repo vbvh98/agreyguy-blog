@@ -7,18 +7,19 @@
 .item1 {
   width: 50%;
   left: 0;
-  background: grey;
+  background: black;
   height: 100%;
 }
 .item3 {
   width: 50%;
   right: 0;
-  background: lightgreen;
+  background: white;
   height: 100%;
 }
 .item2 {
+  display: flex;
   z-index: 0;
-  background: lightblue;
+  background: black;
   height: 100%;
   width: 100%;
   left: 50%;
